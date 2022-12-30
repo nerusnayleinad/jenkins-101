@@ -31,6 +31,6 @@ sudo chown -R jenkins:jenkins /srv/jenkins
 docker run -d -p 80:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock -v /srv/jenkins/data/jenkins_home:/var/jenkins_home --name jenkins viejo/jenkins:docker
 ```
 
-Note: the Dicker in Docker image will be launched by the master instance.
+Note: the Docker in Docker image will be launched by the master instance.
 
 ####

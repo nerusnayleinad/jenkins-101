@@ -13,7 +13,7 @@ pipeline {
                     }
                 }
             stages {
-                stage ('version-maven'){
+                stage ('version-maven') {
                     agent { 
                         docker { 
                             image 'maven:3.8.6-openjdk-11-slim'

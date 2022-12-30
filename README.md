@@ -32,5 +32,8 @@ docker run -d -p 80:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.
 ```
 
 Note: the Docker in Docker image will be launched by the master instance.
+Note: With the Jenkinsfile the master node needs to have the following:
++ labeled with built-in
++ number of executors at least 4
 
 ####

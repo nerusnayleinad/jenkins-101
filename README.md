@@ -36,4 +36,21 @@ Note: With the Jenkinsfile the master node needs to have the following:
 + labeled with built-in
 + number of executors at least 4
 
-####
+#### Master-Slave
+
+For master-slave configuration, create a slave node as follows:
++ Create an SSH key pair.
+  + $ ssh-keygen -C jenkins -f ~/.ssh/jenkins_slave
+  + Create Credentials with the private key*
++ Launch the agent (slave node)
+  + $ docker run -d --name=jenkins-slave -v /srv/jenkins-slave:/home/jenkins -p 22:22 -e "JENKINS_AGENT_SSH_PUBKEY=ssh-rsa ... jenkins" jenkins/ssh-agent:alpine
++ Note
++ Manage Jenkins > Manage Nodes and Clouds
+  + New Node > Name (e.g. jenkins-slave) > Permanent Agent (checked)
+    + Number of executors: 2 (optionañ)
+    + Remote root directory: /home/jenkins
+    + Labels: jenkins-slave (optional)
+    + Launch method: Launch agents vie SSH
+      + Host: a.b.c.d
+      + Credentials (SSH credentials with Username "jenkins")*
+      + Host Key Verification Strategy: Manually trusted key Verification Strategy

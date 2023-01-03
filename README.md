@@ -43,14 +43,20 @@ For master-slave configuration, create a slave node as follows:
   + $ ssh-keygen -C jenkins -f ~/.ssh/jenkins_slave
   + Create Credentials with the private key*
 + Launch the agent (slave node)
-  + $ docker run -d --name=jenkins-slave -v /srv/jenkins-slave:/home/jenkins -p 22:22 -e "JENKINS_AGENT_SSH_PUBKEY=ssh-rsa ... jenkins" jenkins/ssh-agent:alpine
-+ Note
+  + (1) $ docker run -d --name=jenkins-slave -v /srv/jenkins-slave/agent:/home/jenkins -p 22:22 -e "JENKINS_AGENT_SSH_PUBKEY=ssh-rsa ... jenkins" jenkins/ssh-agent:alpine
+  + (2) $ docker run -d --name=jenkins-slave -v /srv/jenkins-slave/agent:/home/jenkins -p 22:22 viejo/jenkins-agent:docker
 + Manage Jenkins > Manage Nodes and Clouds
   + New Node > Name (e.g. jenkins-slave) > Permanent Agent (checked)
-    + Number of executors: 2 (optionañ)
+    + Number of executors: 2 (optional)
     + Remote root directory: /home/jenkins
     + Labels: jenkins-slave (optional)
-    + Launch method: Launch agents vie SSH
+    + Launch method: Launch agents via SSH
       + Host: a.b.c.d
       + Credentials (SSH credentials with Username "jenkins")*
       + Host Key Verification Strategy: Manually trusted key Verification Strategy
+
+Note: The Credential for adding an agent must be with user "jenkins", even though the user when creating the key (with ssh-keygen), is differnet.
+
+Registros relacionados:
+  + viejo/jenkins:docker -> master
+  + viejo/dind4jenkins:alpine_3_12_master -> para creater stages dentro de containers de docker.

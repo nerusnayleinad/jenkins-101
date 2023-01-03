@@ -43,8 +43,14 @@ For master-slave configuration, create a slave node as follows:
   + $ ssh-keygen -C jenkins -f ~/.ssh/jenkins_slave
   + Create Credentials with the private key*
 + Launch the agent (slave node)
-  + (1) ```$ docker run -d --name=jenkins-slave -v /srv/jenkins-slave/agent:/home/jenkins -p 22:22 -e "JENKINS_AGENT_SSH_PUBKEY=ssh-rsa ... jenkins" jenkins/ssh-agent:alpine```
-  + (2) ```$ docker run -d --name=jenkins-slave -v /srv/jenkins-slave/agent:/home/jenkins -p 22:22 viejo/jenkins-agent:docker```
+  + (1) 
+  ```
+  $ docker run -d --name=jenkins-slave -v /srv/jenkins-slave/agent:/home/jenkins -p 22:22 -e "JENKINS_AGENT_SSH_PUBKEY=ssh-rsa ... jenkins" jenkins/ssh-agent:alpine
+  ```
+  + (2)
+  ```
+  $ docker run -d --name=jenkins-slave -v /srv/jenkins-slave/agent:/home/jenkins -p 22:22 viejo/jenkins-agent:docker
+  ```
 + Manage Jenkins > Manage Nodes and Clouds
   + New Node > Name (e.g. jenkins-slave) > Permanent Agent (checked)
     + Number of executors: 2 (optional)

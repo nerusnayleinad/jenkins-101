@@ -1,7 +1,7 @@
 pipeline {
     agent { 
         label { label 'jenkins-slave' }      // This is the master node that has been labeled with 'built-in'
-    }                                   // Equivalent to agent none, as it doesn't have any slaves to pick
+    }                                        // Equivalent to agent none, as it doesn't have any slaves to pick
     
     stages {
         stage('Using DinD image') {

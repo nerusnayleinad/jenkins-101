@@ -63,6 +63,7 @@ For master-slave configuration, create a slave node as follows:
 
 Note: The Credential for adding an agent must be with user "jenkins", even though the user when creating the key (with ssh-keygen), is differnet.
 
-Registros relacionados:
+Related registries (imagies):
   + viejo/jenkins:docker -> master
+  + viejo/jenkins-agent:docker -> agent/slave
   + viejo/dind4jenkins:alpine_3_12_master -> para creater stages dentro de containers de docker.
